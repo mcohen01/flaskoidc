@@ -17,14 +17,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 __version__ = '1.0.2'
 
 setup(
-    name='flaskoidc',
+    name='adsk-flaskoidc',
     version=__version__,
     description='Flask wrapper with pre-configured OAuth2 and OIDC support',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/verdan/flaskoidc.git',
-    author='Verdan Mahmood',
-    author_email='verdan.mahmood@gmail.com',
+    url='https://github.com/mcohen01/flaskoidc.git',
+    author='Michael Cohen',
+    author_email='mcohen01@gmail.com',
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     dependency_links=[],
