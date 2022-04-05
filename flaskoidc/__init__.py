@@ -129,7 +129,7 @@ class FlaskOIDC(Flask):
                 OAuth2Token.save(name=_provider, user_id=user_id, **db_token)
                 session["user"] = user
                 session["user"]["__id"] = user_id
-                url = session.get('session_start_url'):
+                url = session.get('session_start_url')
                 if url:
                     session.pop('session_start_url')
                     return redirect(url)
