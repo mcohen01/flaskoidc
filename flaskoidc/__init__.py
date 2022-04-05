@@ -54,6 +54,8 @@ class FlaskOIDC(Flask):
                     self.auth_client.token = token
         else:
             try:
+                if request.path.startswith('/table_detail') or request.path.startswith('/search'):
+                    session['session_start_url'] = request.path
                 self.auth_client.token
             except Exception as ex:
                 LOGGER.exception("User not logged in, redirecting to auth", exc_info=True)
@@ -127,7 +129,12 @@ class FlaskOIDC(Flask):
                 OAuth2Token.save(name=_provider, user_id=user_id, **db_token)
                 session["user"] = user
                 session["user"]["__id"] = user_id
-                return redirect('/')
+                url = session.get('session_start_url'):
+                if url:
+                    session.pop('session_start_url')
+                    return redirect(url)
+                else:
+                    return redirect('/')
             except Exception as ex:
                 LOGGER.exception(ex)
                 raise ex
